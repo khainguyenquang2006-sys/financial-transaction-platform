@@ -1,0 +1,136 @@
+PROJECT: FINANCIAL TRANSACTION PLATFORM
+
+BUSINESS PROBLEM
+
+A fintech startup wants to build a system for managing customers' financial accounts and transactions.
+
+The system must manage:
+
+Customers
+Financial accounts
+Transactions
+Recipients
+Merchants
+Spending categories
+REQUIREMENTS
+
+2.1 CUSTOMER
+
+Each customer has:
+
+CustomerID
+Name
+Email
+Phone
+Date of Birth
+
+A customer can own multiple accounts.
+
+Each account belongs to exactly one customer.
+
+Customer email must be unique.
+
+2.2 ACCOUNT
+
+Each account has:
+
+AccountID
+Account Number
+Account Type
+Current Balance
+Status
+Created Date
+
+Account types can be:
+
+CHECKING
+SAVINGS
+WALLET
+
+An account can perform many transactions.
+
+Account number must be unique.
+
+Account balance cannot be negative if the account does not allow overdraft.
+
+2.3 TRANSACTION
+
+Each transaction has:
+
+TransactionID
+Transaction Date/Time
+Amount
+Transaction Type
+Status
+Description
+
+Transaction types can be:
+
+DEPOSIT
+WITHDRAWAL
+TRANSFER
+PAYMENT
+
+Business rules:
+
+Each transaction must be associated with one account that sends or spends the money.
+A transfer can be associated with one receiving account.
+An account can appear in many transactions.
+Transaction amount must be greater than 0.
+Every transaction must have a status.
+
+2.4 MERCHANT
+
+The system stores merchant information:
+
+MerchantID
+Name
+Business Type
+
+Business rules:
+
+A merchant can have many payment transactions.
+A payment transaction can be associated with zero or one merchant.
+Deposits, withdrawals, and transfers do not necessarily have a merchant.
+
+2.5 CATEGORY
+
+Transactions can be classified into categories such as:
+
+Food
+Transport
+Shopping
+Entertainment
+Bills
+Other
+
+Business rules:
+
+A category can contain many transactions.
+A transaction can belong to zero or one category.
+
+2.6 RECIPIENT
+
+Customers can save recipients for faster money transfers.
+
+Business rules:
+
+A customer can save multiple recipients.
+A recipient can be saved by multiple customers.
+Therefore, the relationship between Customer and Recipient is many-to-many.
+This many-to-many relationship must be resolved when converting the ER model into a relational model.
+
+2.7 TRANSACTION HISTORY
+
+The system must maintain transaction history.
+A transaction must not be deleted simply because an account is closed.
+A transaction must retain its timestamp and status.
+FINANCIAL INTEGRITY RULES
+
+The system must ensure:
+
+Account balance cannot be negative if the account does not allow overdraft.
+Transaction amount must be greater than 0.
+Account number must be unique.
+Customer email must be unique.
+Every transaction must have a status.
